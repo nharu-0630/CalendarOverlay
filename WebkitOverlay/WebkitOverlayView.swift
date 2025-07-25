@@ -21,12 +21,16 @@ struct WebkitOverlayView: View {
     
     // MARK: - Body
     var body: some View {
-        VStack(spacing: 0) {
-            contentArea
+        ZStack {
+            VStack(spacing: 0) {
+                contentArea
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(backgroundView)
+            .animation(.easeInOut(duration: 0.3), value: isVisible)
+            
+            NotificationOverlay()
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(backgroundView)
-        .animation(.easeInOut(duration: 0.3), value: isVisible)
         .onAppear {
             loadSettings()
             setupNotificationObserver()

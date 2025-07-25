@@ -164,6 +164,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         print("📱 Interactive mode state changed to: \(isInteractiveMode)")
         
         configureInteractiveMode(for: window)
+        
+        if isInteractiveMode {
+            NotificationManager.shared.showSuccess("インタラクティブモードを有効にしました")
+        } else {
+            NotificationManager.shared.showInfo("インタラクティブモードを無効にしました")
+        }
     }
     
     @objc private func settingsChanged() {
@@ -301,7 +307,20 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     }
     
     private func createWindow(with screenRect: NSRect) {
-        let windowRect = NSRect(x: 0, y: 0, width: screenRect.width, height: screenRect.height)
+        // メニューバーとDockを避けた安全な領域を計算
+        guard let screen = NSScreen.main else { return }
+        let visibleFrame = screen.visibleFrame
+        
+        // メニューバーの高さを考慮（通常25px程度）
+        let menuBarHeight = screenRect.height - visibleFrame.height - visibleFrame.origin.y
+        let adjustedY = menuBarHeight > 0 ? menuBarHeight : 0
+        
+        let windowRect = NSRect(
+            x: visibleFrame.origin.x,
+            y: adjustedY,
+            width: visibleFrame.width,
+            height: visibleFrame.height
+        )
         
         overlayWindow = OverlayWindow(
             contentRect: windowRect,
@@ -309,6 +328,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             backing: .buffered,
             defer: false
         )
+        
+        print("📏 Adjusted window frame: \(windowRect)")
+        print("📏 Screen visible frame: \(visibleFrame)")
     }
     
     private func configureWindow() {
