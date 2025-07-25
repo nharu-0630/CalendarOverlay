@@ -4,6 +4,7 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
     var overlayWindow: NSWindow?
     var statusBarItem: NSStatusItem?
+    var isInteractiveMode = false
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         print("🚀 App did finish launching")
@@ -43,32 +44,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let menu = NSMenu()
         menu.addItem(NSMenuItem(title: "Show/Hide Overlay", action: #selector(toggleOverlay), keyEquivalent: ""))
-        menu.addItem(NSMenuItem(title: "Bring to Front (5s)", action: #selector(bringToFront), keyEquivalent: ""))
-        menu.addItem(NSMenuItem(title: "Send to Back", action: #selector(sendToBack), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "Toggle Interactive Mode", action: #selector(toggleInteractiveMode), keyEquivalent: ""))
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         
         statusBarItem?.menu = menu
     }
     
-    @objc func bringToFront() {
-        if let window = overlayWindow {
-            window.level = .floating
-            window.makeKeyAndOrderFront(nil)
+    @objc func toggleInteractiveMode() {
+        if let window = overlayWindow as? OverlayWindow {
+            isInteractiveMode.toggle()
             
-            // 5秒後に元のレベルに戻す
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            if isInteractiveMode {
+                window.setInteractiveMode(true)
+                window.level = .floating
+                window.ignoresMouseEvents = false
+                window.makeKeyAndOrderFront(nil)
+                // WebViewがキー入力を受け取れるようにフォーカスを設定
+                window.makeFirstResponder(window.contentView)
+                print("🖱️ Interactive mode ON - Window brought to front and can receive key input")
+            } else {
+                window.setInteractiveMode(false)
                 window.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.desktopWindow)) + 1)
-                print("⬇️ Window sent back to overlay level")
+                window.ignoresMouseEvents = true
+                window.resignKey()
+                print("🖼️ Interactive mode OFF - Window sent to overlay level")
             }
-            print("⬆️ Window brought to front for 5 seconds")
-        }
-    }
-    
-    @objc func sendToBack() {
-        if let window = overlayWindow {
-            window.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.desktopWindow)) + 1)
-            print("⬇️ Window sent to overlay level")
         }
     }
     
@@ -82,13 +83,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 window.orderOut(nil)
             } else {
                 window.makeKeyAndOrderFront(nil)
-                // ウィンドウを一時的に前面に表示して操作可能にする
-                window.level = .floating
-                
-                // 5秒後に元のレベルに戻す
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-                    window.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.desktopWindow)) + 1)
-                }
             }
         }
     }
@@ -104,11 +98,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let screenRect = screen.frame
         print("📏 Screen size: \(screenRect)")
         
-        // ウィンドウの位置とサイズ
-        let windowWidth: CGFloat = 800
-        let windowHeight: CGFloat = 600
-        let windowX: CGFloat = 100
-        let windowY = screenRect.height - windowHeight - 100
+        // ウィンドウの位置とサイズ（画面全体に最大化）
+        let windowWidth: CGFloat = screenRect.width
+        let windowHeight: CGFloat = screenRect.height
+        let windowX: CGFloat = 0
+        let windowY: CGFloat = 0
         
         // オーバーレイウィンドウの作成
         overlayWindow = OverlayWindow(
@@ -128,10 +122,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.isOpaque = false
         window.backgroundColor = NSColor.clear
         window.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.desktopWindow)) + 1)
-        window.ignoresMouseEvents = false
+        window.ignoresMouseEvents = !isInteractiveMode
+        window.acceptsMouseMovedEvents = true
         window.collectionBehavior = [.canJoinAllSpaces, .stationary]
         window.hidesOnDeactivate = false
         window.hasShadow = true
+        
+        // インタラクティブモードの初期設定
+        if let overlayWindow = window as? OverlayWindow {
+            overlayWindow.setInteractiveMode(isInteractiveMode)
+        }
         
         // コンテンツビューの設定
         let contentView = NSHostingView(rootView: CalendarOverlayView())

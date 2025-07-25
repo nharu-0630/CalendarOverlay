@@ -12,6 +12,7 @@ import SwiftUI
 class OverlayWindow: NSWindow {
     private var initialLocation: NSPoint = NSPoint()
     private var isDragging = false
+    private var _canBecomeKey = false
     
     override init(contentRect: NSRect, styleMask style: NSWindow.StyleMask, backing backingStoreType: NSWindow.BackingStoreType, defer flag: Bool) {
         super.init(contentRect: contentRect, styleMask: style, backing: backingStoreType, defer: flag)
@@ -87,5 +88,21 @@ class OverlayWindow: NSWindow {
     override func resignKey() {
         super.resignKey()
         print("🚪 Window resigned key")
+    }
+    
+    // キーウィンドウになれるかどうか
+    override var canBecomeKey: Bool {
+        return _canBecomeKey
+    }
+    
+    // メインウィンドウになれるかどうか
+    override var canBecomeMain: Bool {
+        return _canBecomeKey
+    }
+    
+    // インタラクティブモードの設定
+    func setInteractiveMode(_ interactive: Bool) {
+        _canBecomeKey = interactive
+        print("🔧 OverlayWindow interactive mode set to: \(interactive)")
     }
 }

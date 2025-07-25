@@ -57,9 +57,9 @@ class HotkeyManager {
     func handleHotkey() {
         print("🔥 Hotkey pressed!")
         
-        // AppDelegateを取得してオーバーレイを前面に表示
+        // AppDelegateを取得してインタラクティブモードを切り替え
         if let appDelegate = NSApplication.shared.delegate as? AppDelegate {
-            appDelegate.bringToFront()
+            appDelegate.toggleInteractiveMode()
         }
     }
     
