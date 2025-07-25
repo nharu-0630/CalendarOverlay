@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct WebkitOverlayApp: App {
+struct WebKitOverlayApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {

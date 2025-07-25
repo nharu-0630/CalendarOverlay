@@ -1,7 +1,7 @@
 import SwiftUI
 import WebKit
 
-struct WebkitOverlayView: View {
+struct WebKitOverlayView: View {
     // MARK: - Constants
     private enum ViewConstants {
         static let defaultOpacity: Double = 0.8
@@ -100,6 +100,6 @@ struct WebkitOverlayView: View {
 
 
 #Preview {
-    WebkitOverlayView()
+    WebKitOverlayView()
         .frame(width: 800, height: 600)
 }

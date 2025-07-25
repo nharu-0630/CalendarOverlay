@@ -339,7 +339,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             return
         }
         
-        window.title = "Webkit Overlay"
+        window.title = "WebKit Overlay"
         window.isOpaque = false
         window.backgroundColor = NSColor.clear
         window.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.desktopWindow)) + 1)
@@ -360,7 +360,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     private func setupWindowContent() {
         guard let window = overlayWindow else { return }
         
-        let contentView = NSHostingView(rootView: WebkitOverlayView())
+        let contentView = NSHostingView(rootView: WebKitOverlayView())
         window.contentView = contentView
     }
     

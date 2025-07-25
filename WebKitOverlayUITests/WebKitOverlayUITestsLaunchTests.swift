@@ -1,13 +1,13 @@
 //
-//  WebkitOverlayUITestsLaunchTests.swift
-//  WebkitOverlayUITests
+//  WebKitOverlayUITestsLaunchTests.swift
+//  WebKitOverlayUITests
 //
 //  Created by nharu on 2025/07/25.
 //
 
 import XCTest
 
-final class WebkitOverlayUITestsLaunchTests: XCTestCase {
+final class WebKitOverlayUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

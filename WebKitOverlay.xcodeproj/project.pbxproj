@@ -12,14 +12,14 @@
 			containerPortal = 246ADF6C2E33620100B6FEA8 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 246ADF732E33620100B6FEA8;
-			remoteInfo = WebkitOverlay;
+			remoteInfo = WebKitOverlay;
 		};
 		246ADF8D2E33620200B6FEA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 246ADF6C2E33620100B6FEA8 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 246ADF732E33620100B6FEA8;
-			remoteInfo = WebkitOverlay;
+			remoteInfo = WebKitOverlay;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -30,7 +30,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		246ADFAC2E3362F300B6FEA8 /* Exceptions for "WebkitOverlay" folder in "WebKitOverlay" target */ = {
+		246ADFAC2E3362F300B6FEA8 /* Exceptions for "WebKitOverlay" folder in "WebKitOverlay" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -40,22 +40,22 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		246ADF762E33620100B6FEA8 /* WebkitOverlay */ = {
+		246ADF762E33620100B6FEA8 /* WebKitOverlay */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				246ADFAC2E3362F300B6FEA8 /* Exceptions for "WebkitOverlay" folder in "WebKitOverlay" target */,
+				246ADFAC2E3362F300B6FEA8 /* Exceptions for "WebKitOverlay" folder in "WebKitOverlay" target */,
 			);
-			path = WebkitOverlay;
+			path = WebKitOverlay;
 			sourceTree = "<group>";
 		};
-		246ADF852E33620200B6FEA8 /* WebkitOverlayTests */ = {
+		246ADF852E33620200B6FEA8 /* WebKitOverlayTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = WebkitOverlayTests;
+			path = WebKitOverlayTests;
 			sourceTree = "<group>";
 		};
-		246ADF8F2E33620200B6FEA8 /* WebkitOverlayUITests */ = {
+		246ADF8F2E33620200B6FEA8 /* WebKitOverlayUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = WebkitOverlayUITests;
+			path = WebKitOverlayUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -88,9 +88,9 @@
 		246ADF6B2E33620100B6FEA8 = {
 			isa = PBXGroup;
 			children = (
-				246ADF762E33620100B6FEA8 /* WebkitOverlay */,
-				246ADF852E33620200B6FEA8 /* WebkitOverlayTests */,
-				246ADF8F2E33620200B6FEA8 /* WebkitOverlayUITests */,
+				246ADF762E33620100B6FEA8 /* WebKitOverlay */,
+				246ADF852E33620200B6FEA8 /* WebKitOverlayTests */,
+				246ADF8F2E33620200B6FEA8 /* WebKitOverlayUITests */,
 				246ADF752E33620100B6FEA8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -121,12 +121,12 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				246ADF762E33620100B6FEA8 /* WebkitOverlay */,
+				246ADF762E33620100B6FEA8 /* WebKitOverlay */,
 			);
 			name = WebKitOverlay;
 			packageProductDependencies = (
 			);
-			productName = WebkitOverlay;
+			productName = WebKitOverlay;
 			productReference = 246ADF742E33620100B6FEA8 /* WebKitOverlay.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -144,12 +144,12 @@
 				246ADF842E33620200B6FEA8 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				246ADF852E33620200B6FEA8 /* WebkitOverlayTests */,
+				246ADF852E33620200B6FEA8 /* WebKitOverlayTests */,
 			);
 			name = WebKitOverlayTests;
 			packageProductDependencies = (
 			);
-			productName = WebkitOverlayTests;
+			productName = WebKitOverlayTests;
 			productReference = 246ADF822E33620200B6FEA8 /* WebKitOverlayTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -167,12 +167,12 @@
 				246ADF8E2E33620200B6FEA8 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				246ADF8F2E33620200B6FEA8 /* WebkitOverlayUITests */,
+				246ADF8F2E33620200B6FEA8 /* WebKitOverlayUITests */,
 			);
 			name = WebKitOverlayUITests;
 			packageProductDependencies = (
 			);
-			productName = WebkitOverlayUITests;
+			productName = WebKitOverlayUITests;
 			productReference = 246ADF8C2E33620200B6FEA8 /* WebKitOverlayUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
@@ -407,7 +407,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = WebkitOverlay/WebkitOverlay.entitlements;
+				CODE_SIGN_ENTITLEMENTS = WebKitOverlay/WebKitOverlay.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -415,14 +415,14 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WebkitOverlay/Info.plist;
+				INFOPLIST_FILE = WebKitOverlay/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.WebkitOverlay";
+				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.WebKitOverlay";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -435,7 +435,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = WebkitOverlay/WebkitOverlay.entitlements;
+				CODE_SIGN_ENTITLEMENTS = WebKitOverlay/WebKitOverlay.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -443,14 +443,14 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WebkitOverlay/Info.plist;
+				INFOPLIST_FILE = WebKitOverlay/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.WebkitOverlay";
+				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.WebKitOverlay";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -468,7 +468,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 15.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.WebkitOverlayTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.WebKitOverlayTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -486,7 +486,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 15.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.WebkitOverlayTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.WebKitOverlayTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -502,11 +502,11 @@
 				DEVELOPMENT_TEAM = Y43PZADGA4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.WebkitOverlayUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.WebKitOverlayUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = WebkitOverlay;
+				TEST_TARGET_NAME = WebKitOverlay;
 			};
 			name = Debug;
 		};
@@ -518,11 +518,11 @@
 				DEVELOPMENT_TEAM = Y43PZADGA4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.WebkitOverlayUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.WebKitOverlayUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = WebkitOverlay;
+				TEST_TARGET_NAME = WebKitOverlay;
 			};
 			name = Release;
 		};

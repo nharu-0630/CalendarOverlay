@@ -49,7 +49,7 @@ class WindowManager: ObservableObject {
         window.hasShadow = true
         
         // コンテンツビューの設定
-        let contentView = NSHostingView(rootView: WebkitOverlayView())
+        let contentView = NSHostingView(rootView: WebKitOverlayView())
         window.contentView = contentView
         
         // ウィンドウを表示

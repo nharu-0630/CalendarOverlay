@@ -1,13 +1,13 @@
 //
-//  WebkitOverlayUITests.swift
-//  WebkitOverlayUITests
+//  WebKitOverlayUITests.swift
+//  WebKitOverlayUITests
 //
 //  Created by nharu on 2025/07/25.
 //
 
 import XCTest
 
-final class WebkitOverlayUITests: XCTestCase {
+final class WebKitOverlayUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
