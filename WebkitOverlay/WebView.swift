@@ -5,6 +5,7 @@ struct WebView: NSViewRepresentable {
     let url: URL
     @State private var isLoading = true
     @State private var hasError = false
+    @State private var refreshTimer: Timer?
     
     func makeNSView(context: Context) -> WKWebView {
         let configuration = WKWebViewConfiguration()
@@ -16,11 +17,17 @@ struct WebView: NSViewRepresentable {
         configuration.websiteDataStore = persistentDataStore
         print("📁 Using persistent data store")
         
-        // Safariと同じユーザーエージェントを設定
-        let macOSVersion = ProcessInfo.processInfo.operatingSystemVersion
-        let safariVersion = "17.2.1"
-        let webKitVersion = "605.1.15"
-        configuration.applicationNameForUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X \(macOSVersion.majorVersion)_\(macOSVersion.minorVersion)_\(macOSVersion.patchVersion)) AppleWebKit/\(webKitVersion) (KHTML, like Gecko) Version/\(safariVersion) Safari/\(webKitVersion)"
+        // Safari偽装設定の確認
+        let userDefaults = UserDefaults.standard
+        let enableSafariSpoofing = userDefaults.object(forKey: "enableSafariSpoofing") as? Bool ?? true
+        
+        if enableSafariSpoofing {
+            // Safariと同じユーザーエージェントを設定
+            let macOSVersion = ProcessInfo.processInfo.operatingSystemVersion
+            let safariVersion = "17.2.1"
+            let webKitVersion = "605.1.15"
+            configuration.applicationNameForUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X \(macOSVersion.majorVersion)_\(macOSVersion.minorVersion)_\(macOSVersion.patchVersion)) AppleWebKit/\(webKitVersion) (KHTML, like Gecko) Version/\(safariVersion) Safari/\(webKitVersion)"
+        }
         
         // セキュリティ設定
         configuration.preferences.javaScriptEnabled = true
@@ -56,8 +63,13 @@ struct WebView: NSViewRepresentable {
         webView.allowsMagnification = true
         webView.allowsLinkPreview = true
         
-        // SafariのUser Agentを再設定（customUserAgentで上書き）
-        webView.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X \(macOSVersion.majorVersion)_\(macOSVersion.minorVersion)_\(macOSVersion.patchVersion)) AppleWebKit/\(webKitVersion) (KHTML, like Gecko) Version/\(safariVersion) Safari/\(webKitVersion)"
+        // Safari偽装が有効な場合のみ、SafariのUser Agentを再設定
+        if enableSafariSpoofing {
+            let macOSVersion = ProcessInfo.processInfo.operatingSystemVersion
+            let safariVersion = "17.2.1"
+            let webKitVersion = "605.1.15"
+            webView.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X \(macOSVersion.majorVersion)_\(macOSVersion.minorVersion)_\(macOSVersion.patchVersion)) AppleWebKit/\(webKitVersion) (KHTML, like Gecko) Version/\(safariVersion) Safari/\(webKitVersion)"
+        }
         
         // デリゲートを設定
         webView.navigationDelegate = context.coordinator
@@ -80,6 +92,18 @@ struct WebView: NSViewRepresentable {
         
         webView.load(request)
         
+        // 設定変更の通知を監視
+        NotificationCenter.default.addObserver(
+            forName: .settingsChanged,
+            object: nil,
+            queue: .main
+        ) { _ in
+            context.coordinator.setupAutoRefresh(for: webView)
+        }
+        
+        // 初回の自動更新設定
+        context.coordinator.setupAutoRefresh(for: webView)
+        
         return webView
     }
     
@@ -93,9 +117,34 @@ struct WebView: NSViewRepresentable {
     
     class Coordinator: NSObject, WKNavigationDelegate, WKUIDelegate {
         let parent: WebView
+        private var refreshTimer: Timer?
         
         init(_ parent: WebView) {
             self.parent = parent
+        }
+        
+        func setupAutoRefresh(for webView: WKWebView) {
+            // 既存のタイマーを無効化
+            refreshTimer?.invalidate()
+            refreshTimer = nil
+            
+            let userDefaults = UserDefaults.standard
+            let refreshInterval = userDefaults.double(forKey: "autoRefreshInterval")
+            
+            // 自動更新が設定されている場合のみタイマーを作成
+            if refreshInterval > 0 {
+                refreshTimer = Timer.scheduledTimer(withTimeInterval: refreshInterval, repeats: true) { _ in
+                    DispatchQueue.main.async {
+                        print("🔄 Auto-refreshing WebView")
+                        webView.reload()
+                    }
+                }
+                print("⏰ Auto-refresh timer set for \(refreshInterval) seconds")
+            }
+        }
+        
+        deinit {
+            refreshTimer?.invalidate()
         }
         
         // ナビゲーション開始
@@ -110,8 +159,29 @@ struct WebView: NSViewRepresentable {
             print("✅ WebView finished loading")
             parent.isLoading = false
             
+            // Safari偽装設定の確認
+            let userDefaults = UserDefaults.standard
+            let enableSafariSpoofing = userDefaults.object(forKey: "enableSafariSpoofing") as? Bool ?? true
+            
             // Safariの偽装とページ調整のJavaScriptを実行
-            let script = """
+            var script = """
+                // ページの余白を調整と背景の透明化
+                document.body.style.margin = '0';
+                document.body.style.padding = '0';
+                document.body.style.backgroundColor = 'transparent';
+                document.documentElement.style.backgroundColor = 'transparent';
+                
+                // 不要な要素を隠す（必要に応じて）
+                var elements = document.querySelectorAll('div[role="banner"], .gb_g, .gb_h');
+                elements.forEach(function(element) {
+                    element.style.display = 'none';
+                });
+            """
+            
+            // Safari偽装が有効な場合のみ、Safari特有の機能を追加
+            if enableSafariSpoofing {
+                script += """
+                
                 // Safariの特徴を偽装
                 Object.defineProperty(navigator, 'vendor', {
                     value: 'Apple Computer, Inc.',
@@ -137,19 +207,8 @@ struct WebView: NSViewRepresentable {
                         pushNotification: {}
                     };
                 }
-                
-                // ページの余白を調整と背景の透明化
-                document.body.style.margin = '0';
-                document.body.style.padding = '0';
-                document.body.style.backgroundColor = 'transparent';
-                document.documentElement.style.backgroundColor = 'transparent';
-                
-                // 不要な要素を隠す（必要に応じて）
-                var elements = document.querySelectorAll('div[role="banner"], .gb_g, .gb_h');
-                elements.forEach(function(element) {
-                    element.style.display = 'none';
-                });
-            """
+                """
+            }
             
             webView.evaluateJavaScript(script) { result, error in
                 if let error = error {

@@ -1,9 +1,10 @@
 import SwiftUI
 import Cocoa
 
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     // MARK: - Properties
     private var overlayWindow: NSWindow?
+    private var settingsWindow: NSWindow?
     private var statusBarItem: NSStatusItem?
     private var isInteractiveMode = false
     
@@ -80,16 +81,36 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func createStatusBarItem() {
         statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         
+        guard statusBarItem != nil else {
+            print("❌ Failed to create status bar item")
+            return
+        }
+        
         configureStatusBarButton()
         createStatusBarMenu()
+        
+        print("✅ Status bar item created successfully")
     }
     
     private func configureStatusBarButton() {
-        guard let button = statusBarItem?.button else { return }
+        guard let button = statusBarItem?.button else {
+            print("❌ Failed to get status bar button")
+            return
+        }
         
-        button.image = NSImage(systemSymbolName: "link.circle", accessibilityDescription: "Webkit Overlay")
+        // システムシンボルを設定
+        if let image = NSImage(systemSymbolName: "calendar.circle.fill", accessibilityDescription: "WebKit Overlay") {
+            button.image = image
+            print("✅ Status bar icon set to calendar.circle.fill")
+        } else {
+            // フォールバック：代替アイコン
+            button.title = "📅"
+            print("✅ Status bar icon set to emoji fallback")
+        }
+        
         button.action = #selector(statusBarButtonClicked)
         button.target = self
+        button.toolTip = "WebKitOverlay - カレンダーオーバーレイ"
     }
     
     private func createStatusBarMenu() {
@@ -97,6 +118,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(NSMenuItem(title: "Show/Hide Overlay", action: #selector(toggleOverlay), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: "Toggle Interactive Mode", action: #selector(toggleInteractiveMode), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: "Toggle Transparency", action: #selector(toggleTransparency), keyEquivalent: ""))
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(NSMenuItem(title: "Settings...", action: #selector(openSettings), keyEquivalent: ","))
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         
@@ -138,6 +161,55 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         } else {
             window.makeKeyAndOrderFront(nil)
         }
+    }
+    
+    @objc private func openSettings() {
+        // 既存の設定ウィンドウがある場合は前面に表示
+        if let existingWindow = settingsWindow {
+            existingWindow.makeKeyAndOrderFront(nil)
+            NSApp.activate(ignoringOtherApps: true)
+            return
+        }
+        
+        // 設定ウィンドウを新規作成
+        let screenFrame = NSScreen.main?.visibleFrame ?? NSRect(x: 0, y: 0, width: 1920, height: 1080)
+        let windowRect = NSRect(
+            x: screenFrame.midX - 250,
+            y: screenFrame.midY - 300,
+            width: 500,
+            height: 600
+        )
+        
+        settingsWindow = NSWindow(
+            contentRect: windowRect,
+            styleMask: [.titled, .closable, .resizable],
+            backing: .buffered,
+            defer: false
+        )
+        
+        guard let window = settingsWindow else { return }
+        
+        window.title = "WebKitOverlay 設定"
+        window.minSize = NSSize(width: 450, height: 550)
+        window.maxSize = NSSize(width: 800, height: 800)
+        window.isReleasedWhenClosed = false
+        window.level = .normal
+        
+        // SwiftUIビューをホストするビューを作成
+        let settingsView = SettingsView()
+        let hostingView = NSHostingView(rootView: settingsView)
+        hostingView.frame = window.contentView?.bounds ?? NSRect.zero
+        hostingView.autoresizingMask = [.width, .height]
+        
+        window.contentView = hostingView
+        
+        // ウィンドウが閉じられた時の処理
+        window.delegate = self
+        
+        window.makeKeyAndOrderFront(nil)
+        NSApp.activate(ignoringOtherApps: true)
+        
+        print("✅ Settings window opened")
     }
     
     // MARK: - Helper Methods
@@ -231,5 +303,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         print("✅ Overlay window created successfully")
         print("👁️ Window is visible: \(window.isVisible)")
         print("📍 Window frame: \(window.frame)")
+    }
+    
+    // MARK: - NSWindowDelegate
+    func windowWillClose(_ notification: Notification) {
+        if let window = notification.object as? NSWindow, window == settingsWindow {
+            settingsWindow = nil
+            print("🗑️ Settings window closed and released")
+        }
     }
 }
