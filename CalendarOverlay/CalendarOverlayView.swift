@@ -2,14 +2,25 @@ import SwiftUI
 import WebKit
 
 struct CalendarOverlayView: View {
+    // MARK: - Constants
+    private enum ViewConstants {
+        static let defaultOpacity: Double = 0.8
+        static let cornerRadius: CGFloat = 12
+        static let shadowRadius: CGFloat = 10
+        static let shadowOpacity: Double = 0.3
+        static let hiddenContentHeight: CGFloat = 60
+        static let calendarURL = "https://calendar.google.com/calendar/u/0/r/customday?tab=rc1"
+    }
+    
+    // MARK: - State Properties
     @State private var isVisible = true
     @State private var useWebView = true
-    @State private var opacity: Double = 0.8
+    @State private var opacity: Double = ViewConstants.defaultOpacity
     
     
+    // MARK: - Body
     var body: some View {
         VStack(spacing: 0) {
-            // コンテンツエリア
             contentArea
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -17,9 +28,7 @@ struct CalendarOverlayView: View {
         .animation(.easeInOut(duration: 0.3), value: isVisible)
     }
     
-    
-    
-    
+    // MARK: - View Components
     private var contentArea: some View {
         Group {
             if isVisible {
@@ -31,11 +40,10 @@ struct CalendarOverlayView: View {
     }
     
     private var webViewContent: some View {
-        CalendarWebView(url: URL(string: "https://calendar.google.com/calendar/u/0/r/customday?tab=rc1")!)
+        CalendarWebView(url: URL(string: ViewConstants.calendarURL)!)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .opacity(opacity)
     }
-    
     
     private var hiddenContent: some View {
         VStack {
@@ -44,22 +52,20 @@ struct CalendarOverlayView: View {
                 .foregroundColor(.secondary)
                 .padding()
         }
-        .frame(height: 60)
+        .frame(height: ViewConstants.hiddenContentHeight)
         .background(Color(NSColor.controlBackgroundColor).opacity(0.5))
-        .clipShape(UnevenRoundedRectangle(
-            cornerRadii: .init(
-                topLeading: 8,
-                bottomLeading: 8,
-                bottomTrailing: 8,
-                topTrailing: 8
-            )
-        ))
+        .clipShape(RoundedRectangle(cornerRadius: ViewConstants.cornerRadius))
     }
     
     private var backgroundView: some View {
-        RoundedRectangle(cornerRadius: 12)
+        RoundedRectangle(cornerRadius: ViewConstants.cornerRadius)
             .fill(Color(NSColor.windowBackgroundColor))
-            .shadow(color: .black.opacity(0.3), radius: 10, x: 0, y: 5)
+            .shadow(
+                color: .black.opacity(ViewConstants.shadowOpacity),
+                radius: ViewConstants.shadowRadius,
+                x: 0,
+                y: 5
+            )
     }
 }
 

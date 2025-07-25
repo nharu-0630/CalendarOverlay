@@ -5,11 +5,16 @@
 //  Created by nharu on 2025/07/25.
 //
 
-
 import Cocoa
 import SwiftUI
 
 class OverlayWindow: NSWindow {
+    // MARK: - Constants
+    private enum WindowConstants {
+        static let titleBarHeight: CGFloat = 60
+    }
+    
+    // MARK: - Properties
     private var initialLocation: NSPoint = NSPoint()
     private var isDragging = false
     private var _canBecomeKey = false
@@ -34,7 +39,7 @@ class OverlayWindow: NSWindow {
         let locationInWindow = event.locationInWindow
         
         // タイトルバー領域でのクリックかどうかを判定
-        if locationInWindow.y > self.frame.height - 60 {
+        if locationInWindow.y > self.frame.height - WindowConstants.titleBarHeight {
             self.initialLocation = locationInWindow
             self.isDragging = true
             print("🖱️ Mouse down in title area - drag started")
