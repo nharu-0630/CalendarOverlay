@@ -24,29 +24,68 @@ struct CalendarWebView: NSViewRepresentable {
         configuration.websiteDataStore = persistentDataStore
         print("📁 Using persistent data store")
         
-        // ユーザーエージェントを設定（Googleのセキュリティチェックを回避するため最新のChromeを使用）
-        configuration.applicationNameForUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        // Safariと同じユーザーエージェントを設定
+        let macOSVersion = ProcessInfo.processInfo.operatingSystemVersion
+        let safariVersion = "17.2.1"
+        let webKitVersion = "605.1.15"
+        configuration.applicationNameForUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X \(macOSVersion.majorVersion)_\(macOSVersion.minorVersion)_\(macOSVersion.patchVersion)) AppleWebKit/\(webKitVersion) (KHTML, like Gecko) Version/\(safariVersion) Safari/\(webKitVersion)"
         
         // セキュリティ設定
         configuration.preferences.javaScriptEnabled = true
         configuration.preferences.javaScriptCanOpenWindowsAutomatically = false
         
-        // Googleのセキュリティチェック回避のための追加設定
-        // 基本的なWebKit設定のみ使用
+        // Safariと同じ設定を適用
+        configuration.processPool = WKProcessPool()
+        configuration.suppressesIncrementalRendering = false
         
         let webView = WKWebView(frame: .zero, configuration: configuration)
         
-        // その他の設定
+        // 半透明設定
+        webView.setValue(false, forKey: "drawsBackground")
+        
+        // ディスパッチキューを使って確実に背景を透明化
+        DispatchQueue.main.async {
+            if let scrollView = webView.subviews.first(where: { $0 is NSScrollView }) as? NSScrollView {
+                scrollView.drawsBackground = false
+                scrollView.backgroundColor = NSColor.clear
+            }
+            
+            // WebViewの全てのサブビューを透明化
+            webView.subviews.forEach { subview in
+                if let scrollView = subview as? NSScrollView {
+                    scrollView.drawsBackground = false
+                    scrollView.backgroundColor = NSColor.clear
+                }
+            }
+        }
+        
+        // Safariの動作を模倣
         webView.allowsBackForwardNavigationGestures = true
-        webView.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        webView.allowsMagnification = true
+        webView.allowsLinkPreview = true
+        
+        // SafariのUser Agentを再設定（customUserAgentで上書き）
+        webView.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X \(macOSVersion.majorVersion)_\(macOSVersion.minorVersion)_\(macOSVersion.patchVersion)) AppleWebKit/\(webKitVersion) (KHTML, like Gecko) Version/\(safariVersion) Safari/\(webKitVersion)"
         
         // デリゲートを設定
         webView.navigationDelegate = context.coordinator
         webView.uiDelegate = context.coordinator
         
-        // 初期ロード
+        // 初期ロード（Safariと同じヘッダーを設定）
         print("🌐 Loading URL: \(url)")
-        let request = URLRequest(url: url)
+        var request = URLRequest(url: url)
+        
+        // Safariと同じHTTPヘッダーを設定
+        request.setValue("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", forHTTPHeaderField: "Accept")
+        request.setValue("gzip, deflate, br", forHTTPHeaderField: "Accept-Encoding")
+        request.setValue("en-US,en;q=0.9", forHTTPHeaderField: "Accept-Language")
+        request.setValue("1", forHTTPHeaderField: "DNT")
+        request.setValue("same-origin", forHTTPHeaderField: "Sec-Fetch-Site")
+        request.setValue("navigate", forHTTPHeaderField: "Sec-Fetch-Mode")
+        request.setValue("document", forHTTPHeaderField: "Sec-Fetch-Dest")
+        request.setValue("?1", forHTTPHeaderField: "Sec-CH-UA-Mobile")
+        request.setValue("macOS", forHTTPHeaderField: "Sec-CH-UA-Platform")
+        
         webView.load(request)
         
         return webView
@@ -79,11 +118,39 @@ struct CalendarWebView: NSViewRepresentable {
             print("✅ WebView finished loading")
             parent.isLoading = false
             
-            // Google Calendarの場合、埋め込み用のJavaScriptを実行
+            // Safariの偽装とページ調整のJavaScriptを実行
             let script = """
-                // ページの余白を調整
+                // Safariの特徴を偽装
+                Object.defineProperty(navigator, 'vendor', {
+                    value: 'Apple Computer, Inc.',
+                    writable: false
+                });
+                
+                Object.defineProperty(navigator, 'webdriver', {
+                    value: undefined,
+                    writable: false
+                });
+                
+                // Safari固有のプロパティを追加
+                if (typeof navigator.standalone === 'undefined') {
+                    Object.defineProperty(navigator, 'standalone', {
+                        value: false,
+                        writable: false
+                    });
+                }
+                
+                // WebKitの特徴を追加
+                if (typeof window.safari === 'undefined') {
+                    window.safari = {
+                        pushNotification: {}
+                    };
+                }
+                
+                // ページの余白を調整と背景の透明化
                 document.body.style.margin = '0';
                 document.body.style.padding = '0';
+                document.body.style.backgroundColor = 'transparent';
+                document.documentElement.style.backgroundColor = 'transparent';
                 
                 // 不要な要素を隠す（必要に応じて）
                 var elements = document.querySelectorAll('div[role="banner"], .gb_g, .gb_h');
@@ -97,6 +164,16 @@ struct CalendarWebView: NSViewRepresentable {
                     print("⚠️ JavaScript execution error: \(error)")
                 } else {
                     print("🎯 JavaScript executed successfully")
+                }
+            }
+            
+            // ページロード後に再度透明化処理を実行
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                webView.subviews.forEach { subview in
+                    if let scrollView = subview as? NSScrollView {
+                        scrollView.drawsBackground = false
+                        scrollView.backgroundColor = NSColor.clear
+                    }
                 }
             }
         }
@@ -193,6 +270,6 @@ struct WebViewLoadingView: View {
 }
 
 #Preview {
-    CalendarWebView(url: URL(string: "https://calendar.google.com/calendar/embed")!)
+    CalendarWebView(url: URL(string: "https://calendar.google.com/calendar/u/0/r/customday?tab=rc1")!)
         .frame(width: 800, height: 600)
 }

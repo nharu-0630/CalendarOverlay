@@ -4,6 +4,7 @@ import WebKit
 struct CalendarOverlayView: View {
     @State private var isVisible = true
     @State private var useWebView = true
+    @State private var opacity: Double = 0.8
     
     
     var body: some View {
@@ -30,8 +31,9 @@ struct CalendarOverlayView: View {
     }
     
     private var webViewContent: some View {
-        CalendarWebView(url: URL(string: "https://calendar.google.com/calendar/embed")!)
+        CalendarWebView(url: URL(string: "https://calendar.google.com/calendar/u/0/r/customday?tab=rc1")!)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .opacity(opacity)
     }
     
     

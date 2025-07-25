@@ -45,6 +45,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let menu = NSMenu()
         menu.addItem(NSMenuItem(title: "Show/Hide Overlay", action: #selector(toggleOverlay), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: "Toggle Interactive Mode", action: #selector(toggleInteractiveMode), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "Toggle Transparency", action: #selector(toggleTransparency), keyEquivalent: ""))
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         
@@ -70,6 +71,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 window.resignKey()
                 print("🖼️ Interactive mode OFF - Window sent to overlay level")
             }
+        }
+    }
+    
+    @objc func toggleTransparency() {
+        if let window = overlayWindow {
+            let currentAlpha = window.alphaValue
+            window.alphaValue = currentAlpha > 0.5 ? 0.3 : 1.0
+            print("🔍 Window transparency set to: \(window.alphaValue)")
         }
     }
     
