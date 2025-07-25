@@ -1,5 +1,13 @@
 import SwiftUI
 
+class SettingsWindowManager: ObservableObject {
+    var dismissWindow: (() -> Void)?
+    
+    func dismiss() {
+        dismissWindow?()
+    }
+}
+
 struct SettingsView: View {
     // MARK: - Constants
     private enum DefaultSettings {
@@ -15,6 +23,7 @@ struct SettingsView: View {
     }
     
     // MARK: - State
+    @EnvironmentObject private var windowManager: SettingsWindowManager
     @State private var defaultURL: String = DefaultSettings.url
     @State private var autoRefreshInterval: Double = DefaultSettings.refreshInterval
     @State private var enableSafariSpoofing: Bool = DefaultSettings.safariSpoofing
@@ -146,10 +155,7 @@ struct SettingsView: View {
             Spacer()
             
             Button("キャンセル") {
-                // 設定画面を閉じる
-                if let window = NSApplication.shared.windows.first(where: { $0.title == "WebKitOverlay 設定" }) {
-                    window.close()
-                }
+                windowManager.dismiss()
             }
             .buttonStyle(BorderedButtonStyle())
             
@@ -208,9 +214,7 @@ struct SettingsView: View {
         NotificationCenter.default.post(name: .settingsChanged, object: nil)
         
         // 設定ウィンドウを閉じる
-        if let window = NSApplication.shared.windows.first(where: { $0.title == "WebKitOverlay 設定" }) {
-            window.close()
-        }
+        windowManager.dismiss()
     }
     
     private func resetToDefaults() {

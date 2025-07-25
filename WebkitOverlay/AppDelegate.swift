@@ -27,23 +27,27 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         // 少し遅延を入れてからウィンドウを作成
         DispatchQueue.main.asyncAfter(deadline: .now() + WindowConstants.defaultDelayTime) {
             self.createOverlayWindow()
+            // オーバーレイウィンドウ作成後に他の不要なウィンドウを隠す
+            self.hideUnwantedWindows()
         }
     }
     
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         print("🔄 Application should handle reopen")
         
+        // オーバーレイウィンドウが存在しない場合のみ作成
         if overlayWindow == nil {
             createOverlayWindow()
-        } else {
-            overlayWindow?.makeKeyAndOrderFront(nil)
         }
+        // 既存のウィンドウがある場合は何もしない（ユーザーが意図的に非表示にした可能性があるため）
+        
         return true
     }
     
     func applicationDidBecomeActive(_ notification: Notification) {
         print("🎯 Application did become active")
-        overlayWindow?.makeKeyAndOrderFront(nil)
+        // アプリがアクティブになっても、ユーザーが意図的に非表示にしたウィンドウは表示しない
+        // 必要に応じてステータスバーメニューから手動で表示可能
     }
     
     func applicationWillTerminate(_ notification: Notification) {
@@ -86,6 +90,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     private func hideMainWindows() {
         NSApp.windows.forEach { window in
             window.setIsVisible(false)
+        }
+    }
+    
+    private func hideUnwantedWindows() {
+        NSApp.windows.forEach { window in
+            // オーバーレイウィンドウと設定ウィンドウ以外を隠す
+            if window != overlayWindow && window != settingsWindow {
+                window.setIsVisible(false)
+                window.orderOut(nil)
+                print("🙈 Hiding unwanted window: \(window.title)")
+            }
         }
     }
     
@@ -209,7 +224,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         window.level = .normal
         
         // SwiftUIビューをホストするビューを作成
+        let windowManager = SettingsWindowManager()
+        windowManager.dismissWindow = { [weak window] in
+            window?.close()
+        }
+        
         let settingsView = SettingsView()
+            .environmentObject(windowManager)
         let hostingView = NSHostingView(rootView: settingsView)
         hostingView.frame = window.contentView?.bounds ?? NSRect.zero
         hostingView.autoresizingMask = [.width, .height]
