@@ -15,6 +15,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // ステータスバーアイテムを作成
         createStatusBarItem()
         
+        // ホットキーのコールバックを設定
+        HotkeyManager.shared.interactiveCallback = { [weak self] in
+            self?.toggleInteractiveMode()
+        }
+        
+        HotkeyManager.shared.showHideCallback = { [weak self] in
+            self?.toggleOverlay()
+        }
+        
         // ホットキーを登録
         HotkeyManager.shared.registerHotkey()
         
@@ -53,8 +62,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @objc func toggleInteractiveMode() {
+        print("🎯 toggleInteractiveMode called")
+        
         if let window = overlayWindow as? OverlayWindow {
             isInteractiveMode.toggle()
+            print("📱 Interactive mode state changed to: \(isInteractiveMode)")
             
             if isInteractiveMode {
                 window.setInteractiveMode(true)
@@ -71,6 +83,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 window.resignKey()
                 print("🖼️ Interactive mode OFF - Window sent to overlay level")
             }
+        } else {
+            print("❌ Failed to get overlay window as OverlayWindow")
         }
     }
     
