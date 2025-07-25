@@ -1,6 +1,6 @@
 //
 //  OverlayWindow.swift
-//  CalendarOverlay
+//  WebkitOverlay
 //
 //  Created by nharu on 2025/07/25.
 //

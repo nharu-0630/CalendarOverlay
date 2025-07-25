@@ -1,13 +1,13 @@
 //
-//  CalendarOverlayUITestsLaunchTests.swift
-//  CalendarOverlayUITests
+//  WebkitOverlayUITestsLaunchTests.swift
+//  WebkitOverlayUITests
 //
 //  Created by nharu on 2025/07/25.
 //
 
 import XCTest
 
-final class CalendarOverlayUITestsLaunchTests: XCTestCase {
+final class WebkitOverlayUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

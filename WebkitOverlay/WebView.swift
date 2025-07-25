@@ -1,15 +1,7 @@
-//
-//  CalendarWebView.swift
-//  CalendarOverlay
-//
-//  Created by nharu on 2025/07/25.
-//
-
-
 import SwiftUI
 import WebKit
 
-struct CalendarWebView: NSViewRepresentable {
+struct WebView: NSViewRepresentable {
     let url: URL
     @State private var isLoading = true
     @State private var hasError = false
@@ -100,9 +92,9 @@ struct CalendarWebView: NSViewRepresentable {
     }
     
     class Coordinator: NSObject, WKNavigationDelegate, WKUIDelegate {
-        let parent: CalendarWebView
+        let parent: WebView
         
-        init(_ parent: CalendarWebView) {
+        init(_ parent: WebView) {
             self.parent = parent
         }
         
@@ -270,6 +262,6 @@ struct WebViewLoadingView: View {
 }
 
 #Preview {
-    CalendarWebView(url: URL(string: "https://calendar.google.com/calendar/u/0/r/customday?tab=rc1")!)
+    WebView(url: URL(string: "https://example.org/")!)
         .frame(width: 800, height: 600)
 }

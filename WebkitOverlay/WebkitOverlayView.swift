@@ -1,7 +1,7 @@
 import SwiftUI
 import WebKit
 
-struct CalendarOverlayView: View {
+struct WebkitOverlayView: View {
     // MARK: - Constants
     private enum ViewConstants {
         static let defaultOpacity: Double = 0.8
@@ -40,7 +40,7 @@ struct CalendarOverlayView: View {
     }
     
     private var webViewContent: some View {
-        CalendarWebView(url: URL(string: ViewConstants.calendarURL)!)
+        WebView(url: URL(string: ViewConstants.calendarURL)!)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .opacity(opacity)
     }
@@ -71,6 +71,6 @@ struct CalendarOverlayView: View {
 
 
 #Preview {
-    CalendarOverlayView()
+    WebkitOverlayView()
         .frame(width: 800, height: 600)
 }

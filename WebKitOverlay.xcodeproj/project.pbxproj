@@ -12,50 +12,50 @@
 			containerPortal = 246ADF6C2E33620100B6FEA8 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 246ADF732E33620100B6FEA8;
-			remoteInfo = CalendarOverlay;
+			remoteInfo = WebkitOverlay;
 		};
 		246ADF8D2E33620200B6FEA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 246ADF6C2E33620100B6FEA8 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 246ADF732E33620100B6FEA8;
-			remoteInfo = CalendarOverlay;
+			remoteInfo = WebkitOverlay;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		246ADF742E33620100B6FEA8 /* CalendarOverlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalendarOverlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		246ADF822E33620200B6FEA8 /* CalendarOverlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarOverlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		246ADF8C2E33620200B6FEA8 /* CalendarOverlayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarOverlayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		246ADF742E33620100B6FEA8 /* WebKitOverlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebKitOverlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		246ADF822E33620200B6FEA8 /* WebKitOverlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebKitOverlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		246ADF8C2E33620200B6FEA8 /* WebKitOverlayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebKitOverlayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		246ADFAC2E3362F300B6FEA8 /* Exceptions for "CalendarOverlay" folder in "CalendarOverlay" target */ = {
+		246ADFAC2E3362F300B6FEA8 /* Exceptions for "WebkitOverlay" folder in "WebKitOverlay" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 246ADF732E33620100B6FEA8 /* CalendarOverlay */;
+			target = 246ADF732E33620100B6FEA8 /* WebKitOverlay */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		246ADF762E33620100B6FEA8 /* CalendarOverlay */ = {
+		246ADF762E33620100B6FEA8 /* WebkitOverlay */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				246ADFAC2E3362F300B6FEA8 /* Exceptions for "CalendarOverlay" folder in "CalendarOverlay" target */,
+				246ADFAC2E3362F300B6FEA8 /* Exceptions for "WebkitOverlay" folder in "WebKitOverlay" target */,
 			);
-			path = CalendarOverlay;
+			path = WebkitOverlay;
 			sourceTree = "<group>";
 		};
-		246ADF852E33620200B6FEA8 /* CalendarOverlayTests */ = {
+		246ADF852E33620200B6FEA8 /* WebkitOverlayTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = CalendarOverlayTests;
+			path = WebkitOverlayTests;
 			sourceTree = "<group>";
 		};
-		246ADF8F2E33620200B6FEA8 /* CalendarOverlayUITests */ = {
+		246ADF8F2E33620200B6FEA8 /* WebkitOverlayUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = CalendarOverlayUITests;
+			path = WebkitOverlayUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -88,9 +88,9 @@
 		246ADF6B2E33620100B6FEA8 = {
 			isa = PBXGroup;
 			children = (
-				246ADF762E33620100B6FEA8 /* CalendarOverlay */,
-				246ADF852E33620200B6FEA8 /* CalendarOverlayTests */,
-				246ADF8F2E33620200B6FEA8 /* CalendarOverlayUITests */,
+				246ADF762E33620100B6FEA8 /* WebkitOverlay */,
+				246ADF852E33620200B6FEA8 /* WebkitOverlayTests */,
+				246ADF8F2E33620200B6FEA8 /* WebkitOverlayUITests */,
 				246ADF752E33620100B6FEA8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -98,9 +98,9 @@
 		246ADF752E33620100B6FEA8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				246ADF742E33620100B6FEA8 /* CalendarOverlay.app */,
-				246ADF822E33620200B6FEA8 /* CalendarOverlayTests.xctest */,
-				246ADF8C2E33620200B6FEA8 /* CalendarOverlayUITests.xctest */,
+				246ADF742E33620100B6FEA8 /* WebKitOverlay.app */,
+				246ADF822E33620200B6FEA8 /* WebKitOverlayTests.xctest */,
+				246ADF8C2E33620200B6FEA8 /* WebKitOverlayUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,9 +108,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		246ADF732E33620100B6FEA8 /* CalendarOverlay */ = {
+		246ADF732E33620100B6FEA8 /* WebKitOverlay */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 246ADF962E33620200B6FEA8 /* Build configuration list for PBXNativeTarget "CalendarOverlay" */;
+			buildConfigurationList = 246ADF962E33620200B6FEA8 /* Build configuration list for PBXNativeTarget "WebKitOverlay" */;
 			buildPhases = (
 				246ADF702E33620100B6FEA8 /* Sources */,
 				246ADF712E33620100B6FEA8 /* Frameworks */,
@@ -121,18 +121,18 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				246ADF762E33620100B6FEA8 /* CalendarOverlay */,
+				246ADF762E33620100B6FEA8 /* WebkitOverlay */,
 			);
-			name = CalendarOverlay;
+			name = WebKitOverlay;
 			packageProductDependencies = (
 			);
-			productName = CalendarOverlay;
-			productReference = 246ADF742E33620100B6FEA8 /* CalendarOverlay.app */;
+			productName = WebkitOverlay;
+			productReference = 246ADF742E33620100B6FEA8 /* WebKitOverlay.app */;
 			productType = "com.apple.product-type.application";
 		};
-		246ADF812E33620200B6FEA8 /* CalendarOverlayTests */ = {
+		246ADF812E33620200B6FEA8 /* WebKitOverlayTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 246ADF992E33620200B6FEA8 /* Build configuration list for PBXNativeTarget "CalendarOverlayTests" */;
+			buildConfigurationList = 246ADF992E33620200B6FEA8 /* Build configuration list for PBXNativeTarget "WebKitOverlayTests" */;
 			buildPhases = (
 				246ADF7E2E33620200B6FEA8 /* Sources */,
 				246ADF7F2E33620200B6FEA8 /* Frameworks */,
@@ -144,18 +144,18 @@
 				246ADF842E33620200B6FEA8 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				246ADF852E33620200B6FEA8 /* CalendarOverlayTests */,
+				246ADF852E33620200B6FEA8 /* WebkitOverlayTests */,
 			);
-			name = CalendarOverlayTests;
+			name = WebKitOverlayTests;
 			packageProductDependencies = (
 			);
-			productName = CalendarOverlayTests;
-			productReference = 246ADF822E33620200B6FEA8 /* CalendarOverlayTests.xctest */;
+			productName = WebkitOverlayTests;
+			productReference = 246ADF822E33620200B6FEA8 /* WebKitOverlayTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		246ADF8B2E33620200B6FEA8 /* CalendarOverlayUITests */ = {
+		246ADF8B2E33620200B6FEA8 /* WebKitOverlayUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 246ADF9C2E33620200B6FEA8 /* Build configuration list for PBXNativeTarget "CalendarOverlayUITests" */;
+			buildConfigurationList = 246ADF9C2E33620200B6FEA8 /* Build configuration list for PBXNativeTarget "WebKitOverlayUITests" */;
 			buildPhases = (
 				246ADF882E33620200B6FEA8 /* Sources */,
 				246ADF892E33620200B6FEA8 /* Frameworks */,
@@ -167,13 +167,13 @@
 				246ADF8E2E33620200B6FEA8 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				246ADF8F2E33620200B6FEA8 /* CalendarOverlayUITests */,
+				246ADF8F2E33620200B6FEA8 /* WebkitOverlayUITests */,
 			);
-			name = CalendarOverlayUITests;
+			name = WebKitOverlayUITests;
 			packageProductDependencies = (
 			);
-			productName = CalendarOverlayUITests;
-			productReference = 246ADF8C2E33620200B6FEA8 /* CalendarOverlayUITests.xctest */;
+			productName = WebkitOverlayUITests;
+			productReference = 246ADF8C2E33620200B6FEA8 /* WebKitOverlayUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -199,7 +199,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 246ADF6F2E33620100B6FEA8 /* Build configuration list for PBXProject "CalendarOverlay" */;
+			buildConfigurationList = 246ADF6F2E33620100B6FEA8 /* Build configuration list for PBXProject "WebKitOverlay" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -213,9 +213,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				246ADF732E33620100B6FEA8 /* CalendarOverlay */,
-				246ADF812E33620200B6FEA8 /* CalendarOverlayTests */,
-				246ADF8B2E33620200B6FEA8 /* CalendarOverlayUITests */,
+				246ADF732E33620100B6FEA8 /* WebKitOverlay */,
+				246ADF812E33620200B6FEA8 /* WebKitOverlayTests */,
+				246ADF8B2E33620200B6FEA8 /* WebKitOverlayUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -271,12 +271,12 @@
 /* Begin PBXTargetDependency section */
 		246ADF842E33620200B6FEA8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 246ADF732E33620100B6FEA8 /* CalendarOverlay */;
+			target = 246ADF732E33620100B6FEA8 /* WebKitOverlay */;
 			targetProxy = 246ADF832E33620200B6FEA8 /* PBXContainerItemProxy */;
 		};
 		246ADF8E2E33620200B6FEA8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 246ADF732E33620100B6FEA8 /* CalendarOverlay */;
+			target = 246ADF732E33620100B6FEA8 /* WebKitOverlay */;
 			targetProxy = 246ADF8D2E33620200B6FEA8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -407,7 +407,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = CalendarOverlay/CalendarOverlay.entitlements;
+				CODE_SIGN_ENTITLEMENTS = WebkitOverlay/WebkitOverlay.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -415,14 +415,14 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CalendarOverlay/Info.plist;
+				INFOPLIST_FILE = WebkitOverlay/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.CalendarOverlay";
+				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.WebkitOverlay";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -435,7 +435,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = CalendarOverlay/CalendarOverlay.entitlements;
+				CODE_SIGN_ENTITLEMENTS = WebkitOverlay/WebkitOverlay.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -443,14 +443,14 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CalendarOverlay/Info.plist;
+				INFOPLIST_FILE = WebkitOverlay/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.CalendarOverlay";
+				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.WebkitOverlay";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -468,11 +468,11 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 15.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.CalendarOverlayTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.WebkitOverlayTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CalendarOverlay.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CalendarOverlay";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WebKitOverlay.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WebKitOverlay";
 			};
 			name = Debug;
 		};
@@ -486,11 +486,11 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 15.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.CalendarOverlayTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.WebkitOverlayTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CalendarOverlay.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CalendarOverlay";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WebKitOverlay.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WebKitOverlay";
 			};
 			name = Release;
 		};
@@ -502,11 +502,11 @@
 				DEVELOPMENT_TEAM = Y43PZADGA4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.CalendarOverlayUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.WebkitOverlayUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = CalendarOverlay;
+				TEST_TARGET_NAME = WebkitOverlay;
 			};
 			name = Debug;
 		};
@@ -518,18 +518,18 @@
 				DEVELOPMENT_TEAM = Y43PZADGA4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.CalendarOverlayUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.WebkitOverlayUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = CalendarOverlay;
+				TEST_TARGET_NAME = WebkitOverlay;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		246ADF6F2E33620100B6FEA8 /* Build configuration list for PBXProject "CalendarOverlay" */ = {
+		246ADF6F2E33620100B6FEA8 /* Build configuration list for PBXProject "WebKitOverlay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				246ADF942E33620200B6FEA8 /* Debug */,
@@ -538,7 +538,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		246ADF962E33620200B6FEA8 /* Build configuration list for PBXNativeTarget "CalendarOverlay" */ = {
+		246ADF962E33620200B6FEA8 /* Build configuration list for PBXNativeTarget "WebKitOverlay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				246ADF972E33620200B6FEA8 /* Debug */,
@@ -547,7 +547,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		246ADF992E33620200B6FEA8 /* Build configuration list for PBXNativeTarget "CalendarOverlayTests" */ = {
+		246ADF992E33620200B6FEA8 /* Build configuration list for PBXNativeTarget "WebKitOverlayTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				246ADF9A2E33620200B6FEA8 /* Debug */,
@@ -556,7 +556,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		246ADF9C2E33620200B6FEA8 /* Build configuration list for PBXNativeTarget "CalendarOverlayUITests" */ = {
+		246ADF9C2E33620200B6FEA8 /* Build configuration list for PBXNativeTarget "WebKitOverlayUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				246ADF9D2E33620200B6FEA8 /* Debug */,

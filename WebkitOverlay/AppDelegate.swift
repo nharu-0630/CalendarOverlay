@@ -87,7 +87,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func configureStatusBarButton() {
         guard let button = statusBarItem?.button else { return }
         
-        button.image = NSImage(systemSymbolName: "calendar", accessibilityDescription: "Calendar Overlay")
+        button.image = NSImage(systemSymbolName: "link.circle", accessibilityDescription: "Webkit Overlay")
         button.action = #selector(statusBarButtonClicked)
         button.target = self
     }
@@ -201,7 +201,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
         
-        window.title = "Calendar Overlay"
+        window.title = "Webkit Overlay"
         window.isOpaque = false
         window.backgroundColor = NSColor.clear
         window.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.desktopWindow)) + 1)
@@ -219,7 +219,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func setupWindowContent() {
         guard let window = overlayWindow else { return }
         
-        let contentView = NSHostingView(rootView: CalendarOverlayView())
+        let contentView = NSHostingView(rootView: WebkitOverlayView())
         window.contentView = contentView
     }
     
