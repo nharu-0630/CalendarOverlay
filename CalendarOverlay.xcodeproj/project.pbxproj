@@ -1,0 +1,556 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		246ADF832E33620200B6FEA8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 246ADF6C2E33620100B6FEA8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 246ADF732E33620100B6FEA8;
+			remoteInfo = CalendarOverlay;
+		};
+		246ADF8D2E33620200B6FEA8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 246ADF6C2E33620100B6FEA8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 246ADF732E33620100B6FEA8;
+			remoteInfo = CalendarOverlay;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		246ADF742E33620100B6FEA8 /* CalendarOverlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalendarOverlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		246ADF822E33620200B6FEA8 /* CalendarOverlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarOverlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		246ADF8C2E33620200B6FEA8 /* CalendarOverlayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarOverlayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		246ADF762E33620100B6FEA8 /* CalendarOverlay */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CalendarOverlay;
+			sourceTree = "<group>";
+		};
+		246ADF852E33620200B6FEA8 /* CalendarOverlayTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CalendarOverlayTests;
+			sourceTree = "<group>";
+		};
+		246ADF8F2E33620200B6FEA8 /* CalendarOverlayUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CalendarOverlayUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		246ADF712E33620100B6FEA8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		246ADF7F2E33620200B6FEA8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		246ADF892E33620200B6FEA8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		246ADF6B2E33620100B6FEA8 = {
+			isa = PBXGroup;
+			children = (
+				246ADF762E33620100B6FEA8 /* CalendarOverlay */,
+				246ADF852E33620200B6FEA8 /* CalendarOverlayTests */,
+				246ADF8F2E33620200B6FEA8 /* CalendarOverlayUITests */,
+				246ADF752E33620100B6FEA8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		246ADF752E33620100B6FEA8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				246ADF742E33620100B6FEA8 /* CalendarOverlay.app */,
+				246ADF822E33620200B6FEA8 /* CalendarOverlayTests.xctest */,
+				246ADF8C2E33620200B6FEA8 /* CalendarOverlayUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		246ADF732E33620100B6FEA8 /* CalendarOverlay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 246ADF962E33620200B6FEA8 /* Build configuration list for PBXNativeTarget "CalendarOverlay" */;
+			buildPhases = (
+				246ADF702E33620100B6FEA8 /* Sources */,
+				246ADF712E33620100B6FEA8 /* Frameworks */,
+				246ADF722E33620100B6FEA8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				246ADF762E33620100B6FEA8 /* CalendarOverlay */,
+			);
+			name = CalendarOverlay;
+			packageProductDependencies = (
+			);
+			productName = CalendarOverlay;
+			productReference = 246ADF742E33620100B6FEA8 /* CalendarOverlay.app */;
+			productType = "com.apple.product-type.application";
+		};
+		246ADF812E33620200B6FEA8 /* CalendarOverlayTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 246ADF992E33620200B6FEA8 /* Build configuration list for PBXNativeTarget "CalendarOverlayTests" */;
+			buildPhases = (
+				246ADF7E2E33620200B6FEA8 /* Sources */,
+				246ADF7F2E33620200B6FEA8 /* Frameworks */,
+				246ADF802E33620200B6FEA8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				246ADF842E33620200B6FEA8 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				246ADF852E33620200B6FEA8 /* CalendarOverlayTests */,
+			);
+			name = CalendarOverlayTests;
+			packageProductDependencies = (
+			);
+			productName = CalendarOverlayTests;
+			productReference = 246ADF822E33620200B6FEA8 /* CalendarOverlayTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		246ADF8B2E33620200B6FEA8 /* CalendarOverlayUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 246ADF9C2E33620200B6FEA8 /* Build configuration list for PBXNativeTarget "CalendarOverlayUITests" */;
+			buildPhases = (
+				246ADF882E33620200B6FEA8 /* Sources */,
+				246ADF892E33620200B6FEA8 /* Frameworks */,
+				246ADF8A2E33620200B6FEA8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				246ADF8E2E33620200B6FEA8 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				246ADF8F2E33620200B6FEA8 /* CalendarOverlayUITests */,
+			);
+			name = CalendarOverlayUITests;
+			packageProductDependencies = (
+			);
+			productName = CalendarOverlayUITests;
+			productReference = 246ADF8C2E33620200B6FEA8 /* CalendarOverlayUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		246ADF6C2E33620100B6FEA8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1630;
+				LastUpgradeCheck = 1630;
+				TargetAttributes = {
+					246ADF732E33620100B6FEA8 = {
+						CreatedOnToolsVersion = 16.3;
+					};
+					246ADF812E33620200B6FEA8 = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = 246ADF732E33620100B6FEA8;
+					};
+					246ADF8B2E33620200B6FEA8 = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = 246ADF732E33620100B6FEA8;
+					};
+				};
+			};
+			buildConfigurationList = 246ADF6F2E33620100B6FEA8 /* Build configuration list for PBXProject "CalendarOverlay" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 246ADF6B2E33620100B6FEA8;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 246ADF752E33620100B6FEA8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				246ADF732E33620100B6FEA8 /* CalendarOverlay */,
+				246ADF812E33620200B6FEA8 /* CalendarOverlayTests */,
+				246ADF8B2E33620200B6FEA8 /* CalendarOverlayUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		246ADF722E33620100B6FEA8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		246ADF802E33620200B6FEA8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		246ADF8A2E33620200B6FEA8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		246ADF702E33620100B6FEA8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		246ADF7E2E33620200B6FEA8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		246ADF882E33620200B6FEA8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		246ADF842E33620200B6FEA8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 246ADF732E33620100B6FEA8 /* CalendarOverlay */;
+			targetProxy = 246ADF832E33620200B6FEA8 /* PBXContainerItemProxy */;
+		};
+		246ADF8E2E33620200B6FEA8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 246ADF732E33620100B6FEA8 /* CalendarOverlay */;
+			targetProxy = 246ADF8D2E33620200B6FEA8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		246ADF942E33620200B6FEA8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = Y43PZADGA4;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		246ADF952E33620200B6FEA8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = Y43PZADGA4;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		246ADF972E33620200B6FEA8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CalendarOverlay/CalendarOverlay.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y43PZADGA4;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.CalendarOverlay";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		246ADF982E33620200B6FEA8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CalendarOverlay/CalendarOverlay.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y43PZADGA4;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.CalendarOverlay";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		246ADF9A2E33620200B6FEA8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y43PZADGA4;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.CalendarOverlayTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CalendarOverlay.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CalendarOverlay";
+			};
+			name = Debug;
+		};
+		246ADF9B2E33620200B6FEA8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y43PZADGA4;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.CalendarOverlayTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CalendarOverlay.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CalendarOverlay";
+			};
+			name = Release;
+		};
+		246ADF9D2E33620200B6FEA8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y43PZADGA4;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.CalendarOverlayUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = CalendarOverlay;
+			};
+			name = Debug;
+		};
+		246ADF9E2E33620200B6FEA8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y43PZADGA4;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "nharu-0630.CalendarOverlayUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = CalendarOverlay;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		246ADF6F2E33620100B6FEA8 /* Build configuration list for PBXProject "CalendarOverlay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				246ADF942E33620200B6FEA8 /* Debug */,
+				246ADF952E33620200B6FEA8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		246ADF962E33620200B6FEA8 /* Build configuration list for PBXNativeTarget "CalendarOverlay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				246ADF972E33620200B6FEA8 /* Debug */,
+				246ADF982E33620200B6FEA8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		246ADF992E33620200B6FEA8 /* Build configuration list for PBXNativeTarget "CalendarOverlayTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				246ADF9A2E33620200B6FEA8 /* Debug */,
+				246ADF9B2E33620200B6FEA8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		246ADF9C2E33620200B6FEA8 /* Build configuration list for PBXNativeTarget "CalendarOverlayUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				246ADF9D2E33620200B6FEA8 /* Debug */,
+				246ADF9E2E33620200B6FEA8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 246ADF6C2E33620100B6FEA8 /* Project object */;
+}
