@@ -1,17 +1,12 @@
-//
-//  CalendarOverlayApp.swift
-//  CalendarOverlay
-//
-//  Created by nharu on 2025/07/25.
-//
-
 import SwiftUI
 
 @main
 struct CalendarOverlayApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        Settings {
+            EmptyView()
         }
     }
 }

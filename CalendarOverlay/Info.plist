@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Info.plistに追加する設定 -->
+
+	<!-- アプリケーションがバックグラウンドで実行されることを許可 -->
+	<key>LSUIElement</key>
+	<true/>
+
+	<!-- ネットワークアクセスの許可 -->
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+
+	<!-- 最小システムバージョン -->
+	<key>LSMinimumSystemVersion</key>
+	<string>11.0</string>
+
+	<!-- アプリケーションカテゴリ -->
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.productivity</string>
+</dict>
+</plist>
