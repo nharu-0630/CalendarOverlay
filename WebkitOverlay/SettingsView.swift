@@ -1,33 +1,43 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @State private var defaultURL: String = "https://calendar.google.com/calendar/u/0/r/customday?tab=rc1"
-    @State private var autoRefreshInterval: Double = 300 // 5分
-    @State private var enableSafariSpoofing: Bool = true
-    @State private var opacity: Double = 0.8
+    // MARK: - Constants
+    private enum DefaultSettings {
+        static let url = "https://calendar.google.com/calendar/u/0/r/customday?tab=rc1"
+        static let refreshInterval: Double = 300 // 5分
+        static let safariSpoofing = true
+        static let opacity: Double = 0.8
+    }
+    
+    private enum WindowSize {
+        static let width: CGFloat = 450
+        static let height: CGFloat = 520
+    }
+    
+    // MARK: - State
+    @State private var defaultURL: String = DefaultSettings.url
+    @State private var autoRefreshInterval: Double = DefaultSettings.refreshInterval
+    @State private var enableSafariSpoofing: Bool = DefaultSettings.safariSpoofing
+    @State private var opacity: Double = DefaultSettings.opacity
     @State private var showingAlert = false
     @State private var alertMessage = ""
     
     private let refreshIntervals: [Double] = [60, 300, 600, 1800, 3600] // 1分, 5分, 10分, 30分, 1時間
     
     var body: some View {
-        VStack(spacing: 20) {
-            headerView
-            
-            ScrollView {
-                VStack(spacing: 24) {
-                    urlSettingSection
-                    refreshSettingSection
-                    safariSettingSection
-                    opacitySettingSection
-                }
-                .padding()
+        VStack(spacing: 12) {
+            VStack(spacing: 12) {
+                urlSettingSection
+                refreshSettingSection
+                safariSettingSection
+                opacitySettingSection
             }
+            .padding(.horizontal, 16)
+            .padding(.top, 16)
             
             buttonSection
         }
-        .padding()
-        .frame(width: 500, height: 600)
+        .frame(width: WindowSize.width, height: WindowSize.height)
         .onAppear {
             loadSettings()
         }
@@ -38,24 +48,11 @@ struct SettingsView: View {
         }
     }
     
-    private var headerView: some View {
-        VStack(spacing: 8) {
-            Text("WebKitOverlay 設定")
-                .font(.title)
-                .fontWeight(.bold)
-            
-            Text("アプリケーションの動作をカスタマイズできます")
-                .font(.caption)
-                .foregroundColor(.secondary)
-        }
-        .padding(.top)
-    }
-    
     private var urlSettingSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 8) {
             sectionHeader("デフォルトURL", systemImage: "globe")
             
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 6) {
                 TextField("URLを入力してください", text: $defaultURL)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 
@@ -64,16 +61,16 @@ struct SettingsView: View {
                     .foregroundColor(.secondary)
             }
         }
-        .padding()
+        .padding(12)
         .background(Color(NSColor.controlBackgroundColor))
-        .cornerRadius(10)
+        .cornerRadius(8)
     }
     
     private var refreshSettingSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 8) {
             sectionHeader("自動更新間隔", systemImage: "arrow.clockwise")
             
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 6) {
                 Picker("更新間隔", selection: $autoRefreshInterval) {
                     Text("1分").tag(60.0)
                     Text("5分").tag(300.0)
@@ -88,34 +85,37 @@ struct SettingsView: View {
                     .foregroundColor(.secondary)
             }
         }
-        .padding()
+        .padding(12)
         .background(Color(NSColor.controlBackgroundColor))
-        .cornerRadius(10)
+        .cornerRadius(8)
     }
     
     private var safariSettingSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 8) {
             sectionHeader("Safari偽装", systemImage: "safari")
             
-            VStack(alignment: .leading, spacing: 8) {
-                Toggle("Safari偽装を有効にする", isOn: $enableSafariSpoofing)
-                    .toggleStyle(SwitchToggleStyle(tint: .blue))
+            VStack(alignment: .leading, spacing: 6) {
+                HStack {
+                    Toggle("Safari偽装を有効にする", isOn: $enableSafariSpoofing)
+                        .toggleStyle(SwitchToggleStyle(tint: .blue))
+                    Spacer()
+                }
                 
                 Text("WebサイトにSafariブラウザとして認識させます。一部のサイトで必要な場合があります")
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
         }
-        .padding()
+        .padding(12)
         .background(Color(NSColor.controlBackgroundColor))
-        .cornerRadius(10)
+        .cornerRadius(8)
     }
     
     private var opacitySettingSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 8) {
             sectionHeader("透過度", systemImage: "circle.lefthalf.filled")
             
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 6) {
                 HStack {
                     Text("不透明")
                         .font(.caption)
@@ -126,22 +126,18 @@ struct SettingsView: View {
                         .font(.caption)
                 }
                 
-                Text("透過度: \(Int(opacity * 100))%")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                
-                Text("オーバーレイウィンドウの透過度を調整します")
+                Text("透過度: \(Int(opacity * 100))% - オーバーレイウィンドウの透過度を調整します")
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
         }
-        .padding()
+        .padding(12)
         .background(Color(NSColor.controlBackgroundColor))
-        .cornerRadius(10)
+        .cornerRadius(8)
     }
     
     private var buttonSection: some View {
-        HStack(spacing: 16) {
+        HStack(spacing: 12) {
             Button("デフォルトに戻す") {
                 resetToDefaults()
             }
@@ -162,7 +158,7 @@ struct SettingsView: View {
             }
             .buttonStyle(BorderedProminentButtonStyle())
         }
-        .padding()
+        .padding(12)
     }
     
     private func sectionHeader(_ title: String, systemImage: String) -> some View {
@@ -178,18 +174,18 @@ struct SettingsView: View {
     private func loadSettings() {
         let userDefaults = UserDefaults.standard
         
-        defaultURL = userDefaults.string(forKey: "defaultURL") ?? "https://calendar.google.com/calendar/u/0/r/customday?tab=rc1"
+        defaultURL = userDefaults.string(forKey: "defaultURL") ?? DefaultSettings.url
         autoRefreshInterval = userDefaults.double(forKey: "autoRefreshInterval")
         if autoRefreshInterval == 0 {
-            autoRefreshInterval = 300 // デフォルト5分
+            autoRefreshInterval = DefaultSettings.refreshInterval
         }
         enableSafariSpoofing = userDefaults.bool(forKey: "enableSafariSpoofing")
         if userDefaults.object(forKey: "enableSafariSpoofing") == nil {
-            enableSafariSpoofing = true // デフォルト有効
+            enableSafariSpoofing = DefaultSettings.safariSpoofing
         }
         opacity = userDefaults.double(forKey: "opacity")
         if opacity == 0 {
-            opacity = 0.8 // デフォルト80%
+            opacity = DefaultSettings.opacity
         }
     }
     
@@ -208,18 +204,20 @@ struct SettingsView: View {
         userDefaults.set(enableSafariSpoofing, forKey: "enableSafariSpoofing")
         userDefaults.set(opacity, forKey: "opacity")
         
-        alertMessage = "設定が保存されました"
-        showingAlert = true
-        
         // 設定変更の通知を送信
         NotificationCenter.default.post(name: .settingsChanged, object: nil)
+        
+        // 設定ウィンドウを閉じる
+        if let window = NSApplication.shared.windows.first(where: { $0.title == "WebKitOverlay 設定" }) {
+            window.close()
+        }
     }
     
     private func resetToDefaults() {
-        defaultURL = "https://calendar.google.com/calendar/u/0/r/customday?tab=rc1"
-        autoRefreshInterval = 300
-        enableSafariSpoofing = true
-        opacity = 0.8
+        defaultURL = DefaultSettings.url
+        autoRefreshInterval = DefaultSettings.refreshInterval
+        enableSafariSpoofing = DefaultSettings.safariSpoofing
+        opacity = DefaultSettings.opacity
     }
     
     private func isValidURL(_ string: String) -> Bool {

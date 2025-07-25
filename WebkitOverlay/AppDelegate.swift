@@ -7,6 +7,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     private var settingsWindow: NSWindow?
     private var statusBarItem: NSStatusItem?
     private var isInteractiveMode = false
+    private var wasInteractiveModeEnabled = false
     
     // MARK: - Constants
     private enum WindowConstants {
@@ -21,6 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         setupApplication()
         setupHotkeys()
         setupUI()
+        setupSettingsObserver()
         
         // 少し遅延を入れてからウィンドウを作成
         DispatchQueue.main.asyncAfter(deadline: .now() + WindowConstants.defaultDelayTime) {
@@ -71,6 +73,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         createStatusBarItem()
     }
     
+    private func setupSettingsObserver() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(settingsChanged),
+            name: .settingsChanged,
+            object: nil
+        )
+    }
+    
     // MARK: - UI Setup
     private func hideMainWindows() {
         NSApp.windows.forEach { window in
@@ -117,7 +128,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         let menu = NSMenu()
         menu.addItem(NSMenuItem(title: "Show/Hide Overlay", action: #selector(toggleOverlay), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: "Toggle Interactive Mode", action: #selector(toggleInteractiveMode), keyEquivalent: ""))
-        menu.addItem(NSMenuItem(title: "Toggle Transparency", action: #selector(toggleTransparency), keyEquivalent: ""))
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Settings...", action: #selector(openSettings), keyEquivalent: ","))
         menu.addItem(NSMenuItem.separator())
@@ -141,12 +151,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         configureInteractiveMode(for: window)
     }
     
-    @objc private func toggleTransparency() {
-        guard let window = overlayWindow else { return }
-        
-        let currentAlpha = window.alphaValue
-        window.alphaValue = currentAlpha > 0.5 ? 0.3 : 1.0
-        print("🔍 Window transparency set to: \(window.alphaValue)")
+    @objc private func settingsChanged() {
+        print("⚙️ Settings changed - updating overlay transparency")
+        updateOverlayTransparency()
     }
     
     @objc private func statusBarButtonClicked() {
@@ -171,13 +178,19 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             return
         }
         
+        // インタラクティブモードの状態を保存して無効化
+        wasInteractiveModeEnabled = isInteractiveMode
+        if isInteractiveMode {
+            toggleInteractiveMode()
+        }
+        
         // 設定ウィンドウを新規作成
         let screenFrame = NSScreen.main?.visibleFrame ?? NSRect(x: 0, y: 0, width: 1920, height: 1080)
         let windowRect = NSRect(
-            x: screenFrame.midX - 250,
-            y: screenFrame.midY - 300,
-            width: 500,
-            height: 600
+            x: screenFrame.midX - 225,
+            y: screenFrame.midY - 260,
+            width: 450,
+            height: 520
         )
         
         settingsWindow = NSWindow(
@@ -190,8 +203,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         guard let window = settingsWindow else { return }
         
         window.title = "WebKitOverlay 設定"
-        window.minSize = NSSize(width: 450, height: 550)
-        window.maxSize = NSSize(width: 800, height: 800)
+        window.minSize = NSSize(width: 400, height: 480)
+        window.maxSize = NSSize(width: 600, height: 650)
         window.isReleasedWhenClosed = false
         window.level = .normal
         
@@ -236,6 +249,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         window.ignoresMouseEvents = true
         window.resignKey()
         print("🖼️ Interactive mode OFF - Window sent to overlay level")
+    }
+    
+    private func updateOverlayTransparency() {
+        guard let window = overlayWindow else { return }
+        
+        let opacity = UserDefaults.standard.double(forKey: "opacity")
+        let targetOpacity = opacity > 0 ? opacity : 0.8 // デフォルト値
+        
+        window.alphaValue = targetOpacity
+        print("🔍 Window transparency updated to: \(targetOpacity)")
     }
     
     // MARK: - Window Management
@@ -286,6 +309,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         if let overlayWindow = window as? OverlayWindow {
             overlayWindow.setInteractiveMode(isInteractiveMode)
         }
+        
+        // 設定から透過度を読み込み
+        updateOverlayTransparency()
     }
     
     private func setupWindowContent() {
@@ -310,6 +336,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         if let window = notification.object as? NSWindow, window == settingsWindow {
             settingsWindow = nil
             print("🗑️ Settings window closed and released")
+            
+            // インタラクティブモードを復元
+            if wasInteractiveModeEnabled && !isInteractiveMode {
+                toggleInteractiveMode()
+            }
+            wasInteractiveModeEnabled = false
         }
     }
 }
